@@ -4,7 +4,6 @@ import 'package:shopping_list/screens/shoplist_form.dart';
 
 class ShopCard extends StatelessWidget {
   final ShopItem item;
-
   const ShopCard(this.item, {super.key}); // Constructor
 
   @override
@@ -14,17 +13,18 @@ class ShopCard extends StatelessWidget {
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () {
-          // Memunculkan SnackBar ketika diklik
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
-          // Navigate ke route yang sesuai (tergantung jenis tombol)
+          // Navigate to the appropriate route based on the button name
           if (item.name == "Tambah Produk") {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => ShopFormPage()),
             );
+          } else {
+            // Show SnackBar for other buttons
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(SnackBar(
+                  content: Text("Kamu telah menekan tombol ${item.name}!")));
           }
         },
         child: Container(
