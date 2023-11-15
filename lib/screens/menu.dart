@@ -3,7 +3,7 @@ import 'package:shopping_list/widgets/shop_card.dart';
 import 'package:shopping_list/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  MyHomePage({super.key});
   final List<ShopItem> items = [
     ShopItem("Lihat Produk", Icons.checklist),
     ShopItem("Tambah Produk", Icons.add_shopping_cart),
