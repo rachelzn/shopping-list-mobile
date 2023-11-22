@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           return request;
         },
         child: MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Shopping List',
           theme: ThemeData(
             // This is the theme of your application.
             //

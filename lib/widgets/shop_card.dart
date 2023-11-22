@@ -27,7 +27,7 @@ class ShopCard extends StatelessWidget {
           } else if (item.name == "Lihat Produk") {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const ProductPage()));
-          } else if (item.name == "Logout") {
+          } else {
             // Tambahkan ini
             final response =
                 await request.logout("http://127.0.0.1:8000/auth/logout/");
@@ -42,16 +42,12 @@ class ShopCard extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const LoginPage()),
               );
             } else {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("$message"),
-              ));
+              // Show SnackBar for other buttons
+              ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar()
+                ..showSnackBar(SnackBar(
+                    content: Text("Kamu telah menekan tombol ${item.name}!")));
             }
-          } else {
-            // Show SnackBar for other buttons
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(SnackBar(
-                  content: Text("Kamu telah menekan tombol ${item.name}!")));
           }
         },
         child: Container(
